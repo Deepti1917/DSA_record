@@ -1,0 +1,24 @@
+class Solution {
+    public int countHillValley(int[] nums) {
+        int count_hill_val = 0;
+        ArrayList<Integer> freq_hillval = new  ArrayList<>();
+            freq_hillval.add(nums[0]);
+           for(int i =1; i<nums.length;i++) {
+            if(nums[i]!=nums[i-1])
+             freq_hillval.add(nums[i]);
+           }
+      
+         for(int j =1; j<freq_hillval.size()-1;j++){
+            int p = freq_hillval.get(j-1);
+            int c = freq_hillval.get(j);
+            int n = freq_hillval.get(j+1);
+            if((c>p)&&(c>n)){
+            count_hill_val++;}
+            if((c<p)&&(c<n)){
+            count_hill_val++;}
+         }
+        
+        return count_hill_val;
+    
+    }
+}
