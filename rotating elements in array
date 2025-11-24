@@ -1,0 +1,17 @@
+import java.util.ArrayList;
+
+public class Solution {
+	public static ArrayList<Integer> rotateArray(ArrayList<Integer> arr, int k) {
+        int [] num = new int[k];
+        for(int i = 0; i< k; i++){
+            num[i] = arr.get(i);
+        }
+        for(int j = 0 ; j < arr.size()-k; j++){
+            arr.set(j,arr.get(j+k));
+        }
+        for(int a = 0 ; a< k ; a++){
+           arr.set(arr.size()-k+a, num[a]);
+        }
+        return arr;
+    }
+}
