@@ -1,0 +1,37 @@
+import java.util.* ;
+import java.io.*; 
+import java.util.ArrayList;
+
+public class Solution {
+	
+	public static ArrayList<Integer> findSimilarity(ArrayList<Integer> arr1, ArrayList<Integer> arr2, int n, int m) {
+		// Write your code here.
+
+		HashSet <Integer>n1 = new HashSet<>(arr1);
+		HashSet <Integer>n2 = new HashSet<>(arr2);
+        int intersectin_cnt =0 , union_cnt = 0;
+		for(Integer num : arr1){
+			if(n2.contains(num)){
+				intersectin_cnt++;
+			}
+		}
+
+		n1.addAll(n2);
+
+		union_cnt = n1.size();
+
+		ArrayList<Integer> ans = new ArrayList<Integer>();
+		 ans.add(intersectin_cnt);
+		 ans.add(union_cnt);
+
+		 return ans;
+
+
+		
+        
+		
+      
+	     
+
+	}
+}
