@@ -1,0 +1,61 @@
+class Solution {
+
+    public List<List<Integer>> threeSum(int[] nums) {
+        Arrays.sort(nums);
+       List< List <Integer> > list1 = new ArrayList<>();
+        
+          int sum = 0;
+        for(int i = 0; i <nums.length; i++){
+        if( i > 0 && nums[i] == nums[i-1]) continue;
+        int l = i + 1, r = nums.length -1;
+        while (l < r){
+            sum = nums[i] + nums[l] + nums[r];
+            if(sum == 0){
+            list1.add(Arrays.asList(nums[i],nums[l],nums[r]));
+            l++;
+            r--;
+
+            while(l < r && nums[l] == nums[l-1]) l++;
+            while(l < r && nums[r] == nums[r+1]) r--;
+           }
+           else if(sum < 0) l++;
+           else r--;
+
+
+      
+         
+        }
+ 
+       }
+           return list1;
+  
+    }
+}
+
+/*
+======================================================================
+DESCRIPTION:
+This code finds all unique triplets in an array that sum to zero. 
+It first sorts the array, then iterates through it, fixing one element 
+at a time. For the remaining part of the array, it uses a two-pointer 
+approach (left and right) to find pairs that sum up to the negative 
+value of the fixed element. It includes logic to skip identical adjacent 
+elements to guarantee that the output contains no duplicate triplets.
+
+COMPLEXITY ANALYSIS:
+- Time Complexity: $O(n^2)$
+  Sorting the array takes $O(n \log n)$ time. The outer `for` loop runs 
+  $n$ times. Inside this loop, the `while` loop (two-pointer search) 
+  takes $O(n)$ time because the pointers `l` and `r` traverse the 
+  remaining array at most once per `i`. Thus, the overall time 
+  complexity is $O(n \log n + n^2)$, which simplifies to $O(n^2)$.
+
+- Space Complexity: $O(1)$ or $O(\log n)$
+  The auxiliary space complexity (excluding the output list used to 
+  store the final triplets) depends on the sorting algorithm used by 
+  the language. In Java, Arrays.sort() for primitives uses a Dual-Pivot 
+  Quicksort which requires $O(\log n)$ space for the recursion stack. 
+  Otherwise, only a few primitive variables are used, making the additional 
+  space footprint minimal.
+======================================================================
+*/
