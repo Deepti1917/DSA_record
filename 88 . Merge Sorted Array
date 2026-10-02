@@ -1,0 +1,41 @@
+// TOPC - MERGE SORT
+
+class Solution {
+    public void merge(int[] nums1, int m, int[] nums2, int n) {
+        if( nums1.length == 0){
+            System.out.print(Arrays.toString(nums2));
+            return;
+        }
+        if(nums2.length == 0){
+            System.out.print(Arrays.toString(nums1));
+            return;
+        }
+
+        int[] num1copy = new int[m];
+        for(int p = 0; p < m; p++) {
+            num1copy[p] = nums1[p];
+        }
+
+        int i = 0, j = 0, k = 0;
+        
+        while( i < m && j < n){
+            if( num1copy[i] <= nums2[j]){
+                nums1[k++] = num1copy[i++];
+            }
+            else{
+                nums1[k++] = nums2[j++];
+            }
+        }
+
+        while( i < m){
+            nums1[k++] = num1copy[i++];
+        }
+
+        while( j < n){
+            nums1[k++] = nums2[j++];
+        }
+
+        System.out.print(Arrays.toString(nums1));
+        return;
+    }
+}
